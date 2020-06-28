@@ -6,14 +6,16 @@
 </script>
 
 <style>
-    ul#menu li{
-        display : inline;
+    ul li {
+        display: inline;
     }
 </style>
 
-<ul id="menu">
-    <li><a href="/" on:click|preventDefault={() => (menu = 0)}>Home</a></li> |
-    <li><a href="/" on:click|preventDefault={() => (menu = 1)}>Compound interest</a></li> |
+<ul>
+    <li><a href="/" on:click|preventDefault={() => (menu = 0)}>Home</a></li>
+    |
+    <li><a href="/" on:click|preventDefault={() => (menu = 1)}>Compound interest</a></li>
+    |
     <li><a href="/" on:click|preventDefault={() => (menu = 2)}>Compound interest with monthly contribution</a></li>
 </ul>
 
@@ -22,9 +24,9 @@
         Welcome
     </h1>
 {:else if menu === 1}
-    <CompoundInterest />
+    <CompoundInterest/>
 {:else if menu === 2}
-    <CompoundInterestMonthlyContribution />
+    <CompoundInterestMonthlyContribution/>
 {:else}
     <h1>
         Page Not Found
