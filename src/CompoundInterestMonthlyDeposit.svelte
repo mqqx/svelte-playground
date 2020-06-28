@@ -1,20 +1,20 @@
 <script>
-    import { afterUpdate } from 'svelte';
+    import { afterUpdate } from 'svelte'
+    import { format } from './format-utils';
 
-    let seedCapital = 20000;
-    let monthlyDeposit = 2000;
-    let years = 15;
-    let annualInterestRate = 5;
-    let roundedTotal = calculateTotal();
-    let isGermanNumberFormat = true;
+    let seedCapital = 20000
+    let monthlyDeposit = 2000
+    let years = 15
+    let annualInterestRate = 5
+    let roundedTotal = calculateTotal()
 
     function calculateTotal() {
-        let monthlyInterestRateFraction = annualInterestRate / 100 / 12;
-        let months = years * 12;
-        let compoundInterestFactor = Math.pow(1 + monthlyInterestRateFraction, months);
-        let compoundedSeedCapital = seedCapital * compoundInterestFactor;
+        let monthlyInterestRateFraction = annualInterestRate / 100 / 12
+        let months = years * 12
+        let compoundInterestFactor = Math.pow(1 + monthlyInterestRateFraction, months)
+        let compoundedSeedCapital = seedCapital * compoundInterestFactor
         let compoundedMonthlyDeposit = monthlyDeposit * (compoundInterestFactor - 1) / monthlyInterestRateFraction;
-        let total = compoundedSeedCapital + compoundedMonthlyDeposit;
+        let total = compoundedSeedCapital + compoundedMonthlyDeposit
         return roundTotal(total)
     }
 
@@ -23,21 +23,10 @@
         return Math.round((total + Number.EPSILON) * 100) / 100
     }
 
-    function format(number) {
-        return isGermanNumberFormat
-                ? number.toLocaleString('de-DE')
-                : number.toLocaleString();
-    }
-
     afterUpdate(() => {
-        roundedTotal = calculateTotal();
+        roundedTotal = calculateTotal()
     })
 </script>
-
-<label>
-    <input type=checkbox bind:checked={isGermanNumberFormat}>
-    German number format
-</label>
 
 <label>
     seed capital
@@ -62,7 +51,6 @@
     <input type=number bind:value={years} min=1 max=50>
     <input type=range bind:value={years} min=1 max=50>
 </label>
-
 
 <p>{format(seedCapital)} € with {annualInterestRate}% interest rate
     and {format(monthlyDeposit)} € monthly deposit, over {years} years

@@ -1,15 +1,16 @@
 <script>
-    import { afterUpdate } from 'svelte';
+    import { afterUpdate } from 'svelte'
+    import { format } from './format-utils';
 
-    let seedCapital = 10000;
-    let years = 5;
-    let interestRate = 5;
-    let total = calculateTotal();
+    let seedCapital = 10000
+    let years = 5
+    let interestRate = 5
+    let total = calculateTotal()
 
     function calculateTotal() {
-        let interestRateFraction = interestRate / 100;
-        let compoundInterestFactor = Math.pow(1 + interestRateFraction, years);
-        let total = seedCapital * compoundInterestFactor;
+        let interestRateFraction = interestRate / 100
+        let compoundInterestFactor = Math.pow(1 + interestRateFraction, years)
+        let total = seedCapital * compoundInterestFactor
         return roundTotal(total)
     }
 
@@ -19,7 +20,7 @@
     }
 
     afterUpdate(() => {
-        total = calculateTotal();
+        total = calculateTotal()
     })
 </script>
 
@@ -41,5 +42,5 @@
     <input type=range bind:value={years} min=1 max=50>
 </label>
 
-<p>{seedCapital} € with {interestRate}% interest rate over {years} years = {total} €</p>
+<p>{format(seedCapital)} € with {interestRate}% interest rate over {years} years = {format(total)} €</p>
 

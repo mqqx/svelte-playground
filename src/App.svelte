@@ -1,13 +1,14 @@
 <script>
-    import CompoundInterestMonthlyDeposit from './CompoundInterestMonthlyDeposit.svelte';
-    import CompoundInterest from './CompoundInterest.svelte';
+    import CompoundAnnualGrowthRate from './CompoundAnnualGrowthRate.svelte'
+    import CompoundInterestMonthlyDeposit from './CompoundInterestMonthlyDeposit.svelte'
+    import CompoundInterest from './CompoundInterest.svelte'
 
-    export let menu = 2;
+    export let menu = 3
 </script>
 
 <style>
     ul li {
-        display: inline;
+        display: inline
     }
 </style>
 
@@ -17,6 +18,8 @@
     <li><a href="/" on:click|preventDefault={() => (menu = 1)}>Compound interest</a></li>
     |
     <li><a href="/" on:click|preventDefault={() => (menu = 2)}>Compound interest with monthly contribution</a></li>
+    |
+    <li><a href="/" on:click|preventDefault={() => (menu = 3)}>Compound annual growth rate</a></li>
 </ul>
 
 {#if menu === 0}
@@ -27,6 +30,8 @@
     <CompoundInterest/>
 {:else if menu === 2}
     <CompoundInterestMonthlyDeposit/>
+{:else if menu === 3}
+    <CompoundAnnualGrowthRate/>
 {:else}
     <h1>
         Page Not Found
