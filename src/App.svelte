@@ -1,39 +1,32 @@
 <script>
-    let seedCapital = 10000;
-    let monthlyDeposit = 0;
-    let years = 5;
-    let interestRate = 5;
+    import CompoundInterestMonthlyContribution from './CompoundInterestMonthlyContribution.svelte';
+    import CompoundInterest from './CompoundInterest.svelte';
+
+    export let menu = 0;
 </script>
 
-<label>
-    seed capital
-    <input type=number bind:value={seedCapital} min=0 max=100000>
-    <input type=range bind:value={seedCapital} min=0 max=100000>
-</label>
+<style>
+    ul#menu li{
+        display : inline;
+    }
+</style>
 
-<label>
-    monthly deposit
-    <input type=number bind:value={monthlyDeposit} min=0 max=100000>
-    <input type=range bind:value={monthlyDeposit} min=0 max=100000>
-</label>
+<ul id="menu">
+    <li><a href="/" on:click|preventDefault={() => (menu = 0)}>Home</a></li> |
+    <li><a href="/" on:click|preventDefault={() => (menu = 1)}>Compound interest</a></li> |
+    <li><a href="/" on:click|preventDefault={() => (menu = 2)}>Compound interest with monthly contribution</a></li>
+</ul>
 
-<label>
-    interest rate
-    <input type=number bind:value={interestRate} min=0 max=50 step=0.01>
-    <input type=range bind:value={interestRate} min=0 max=50 step=0.01>
-</label>
-
-<label>
-    years
-    <input type=number bind:value={years} min=1 max=50>
-    <input type=range bind:value={years} min=1 max=50>
-</label>
-
-
-
-{#if monthlyDeposit}
-    make other calculation work
+{#if menu === 0}
+    <h1>
+        Welcome
+    </h1>
+{:else if menu === 1}
+    <CompoundInterest />
+{:else if menu === 2}
+    <CompoundInterestMonthlyContribution />
 {:else}
-    <p>{seedCapital} € with {interestRate}% interest rate over {years} years
-        = {Math.round((seedCapital*(Math.pow(1+interestRate/100, years)) + Number.EPSILON) *        100) / 100} €</p>
+    <h1>
+        Page Not Found
+    </h1>
 {/if}
