@@ -1,8 +1,8 @@
 <script>
-    import CompoundInterestMonthlyContribution from './CompoundInterestMonthlyContribution.svelte';
+    import CompoundInterestMonthlyDeposit from './CompoundInterestMonthlyDeposit.svelte';
     import CompoundInterest from './CompoundInterest.svelte';
 
-    export let menu = 0;
+    export let menu = 2;
 </script>
 
 <style>
@@ -26,7 +26,7 @@
 {:else if menu === 1}
     <CompoundInterest/>
 {:else if menu === 2}
-    <CompoundInterestMonthlyContribution/>
+    <CompoundInterestMonthlyDeposit/>
 {:else}
     <h1>
         Page Not Found

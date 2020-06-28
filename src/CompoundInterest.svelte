@@ -2,7 +2,6 @@
     import { afterUpdate } from 'svelte';
 
     let seedCapital = 10000;
-    let monthlyDeposit = 0;
     let years = 5;
     let interestRate = 5;
     let total = calculateTotal();
@@ -14,6 +13,7 @@
         return roundTotal(total)
     }
 
+    // TODO should be extracted
     function roundTotal(total) {
         return Math.round((total + Number.EPSILON) * 100) / 100
     }
@@ -25,14 +25,14 @@
 
 <label>
     seed capital
-    <input type=number bind:value={seedCapital} min=0 max=100000>
-    <input type=range bind:value={seedCapital} min=0 max=100000>
+    <input type=number bind:value={seedCapital} min=1 max=100000>
+    <input type=range bind:value={seedCapital} min=1 max=100000>
 </label>
 
 <label>
     interest rate
-    <input type=number bind:value={interestRate} min=0 max=50 step=0.01>
-    <input type=range bind:value={interestRate} min=0 max=50 step=0.01>
+    <input type=number bind:value={interestRate} min=0 max=50 step=0.1>
+    <input type=range bind:value={interestRate} min=0 max=50 step=0.1>
 </label>
 
 <label>
