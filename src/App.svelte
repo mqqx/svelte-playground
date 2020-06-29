@@ -1,4 +1,5 @@
 <script>
+    import GermanNumberFormatToggle from './GermanNumberFormatToggle.svelte';
     import CompoundAnnualGrowthRate from './CompoundAnnualGrowthRate.svelte'
     import CompoundInterestMonthlyDeposit from './CompoundInterestMonthlyDeposit.svelte'
     import CompoundInterest from './CompoundInterest.svelte'
@@ -21,6 +22,8 @@
     |
     <li><a href="/" on:click|preventDefault={() => (menu = 3)}>Compound annual growth rate</a></li>
 </ul>
+
+<GermanNumberFormatToggle/>
 
 {#if menu === 0}
     <h1>
