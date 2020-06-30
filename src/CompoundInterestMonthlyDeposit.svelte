@@ -1,12 +1,15 @@
 <script>
     import { afterUpdate } from 'svelte'
-    import { format } from './format-utils';
+    import { format, roundTotal } from './format-utils';
 
     let seedCapital = 20000
     let monthlyDeposit = 2000
     let years = 15
     let annualInterestRate = 5
-    let roundedTotal = calculateTotal()
+    let equity = 0
+    let roundedTotal = 0
+    let tax = 18.4625
+    let netAfterTax = 0
 
     function calculateTotal() {
         let monthlyInterestRateFraction = annualInterestRate / 100 / 12
@@ -18,13 +21,18 @@
         return roundTotal(total)
     }
 
-    // TODO should be extracted
-    function roundTotal(total) {
-        return Math.round((total + Number.EPSILON) * 100) / 100
+    function calculateEquity() {
+        equity = seedCapital + monthlyDeposit * 12 * years
+    }
+
+    function calculateNetAfterTax() {
+        netAfterTax = roundTotal((roundedTotal - equity) * (1 - tax / 100) + equity)
     }
 
     afterUpdate(() => {
         roundedTotal = calculateTotal()
+        calculateEquity()
+        calculateNetAfterTax()
     })
 </script>
 
@@ -55,3 +63,6 @@
 <p>{format(seedCapital)} € with {annualInterestRate}% interest rate
     and {format(monthlyDeposit)} € monthly deposit, over {years} years
     = {format(roundedTotal)} €</p>
+
+<p> After {format(tax)}% tax on the profits this comes down to {format(netAfterTax)} € net with an equity
+    of {format(equity)} € </p>

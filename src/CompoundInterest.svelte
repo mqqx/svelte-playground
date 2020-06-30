@@ -1,6 +1,6 @@
 <script>
     import { afterUpdate } from 'svelte'
-    import { format } from './format-utils';
+    import { format, roundTotal } from './format-utils';
 
     let seedCapital = 10000
     let years = 5
@@ -12,11 +12,6 @@
         let compoundInterestFactor = Math.pow(1 + interestRateFraction, years)
         let total = seedCapital * compoundInterestFactor
         return roundTotal(total)
-    }
-
-    // TODO should be extracted
-    function roundTotal(total) {
-        return Math.round((total + Number.EPSILON) * 100) / 100
     }
 
     afterUpdate(() => {
