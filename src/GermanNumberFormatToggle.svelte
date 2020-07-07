@@ -16,17 +16,14 @@
     onDestroy(unsubscribe)
 </script>
 
-<!-- TODO: figure out how a function could be bound to a checkbox change with svelte -->
-<!--<label>-->
-<!--    <input type=checkbox bind:checked={isGermanNumberFormat}>-->
-<!--    German number format-->
-<!--</label>-->
-
-<button on:click={toggleGermanNumberFormat}>
+<label>
+    <input type=checkbox
+           bind:checked={isGermanNumberFormat}
+           on:click={toggleGermanNumberFormat}>
     German number format
     {#if isGermanNumberFormat}
         on
     {:else}
         off
     {/if}
-</button>
+</label>
