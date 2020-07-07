@@ -3,7 +3,7 @@
     import { format } from './format-utils';
 
     let startPrice = 93.68
-    let endPrice = 340.33
+    let endPrice = 357.33
     let currentYear = new Date().getFullYear()
     let years = currentYear - 1993
     let compoundAnnualGrowthRate = 5.00

@@ -3,7 +3,7 @@
     import { format, roundTotal } from './format-utils';
 
     let seedCapital = 10000
-    let years = 5
+    let years = 20
     let interestRate = 5
     let total = calculateTotal()
 

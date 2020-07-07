@@ -4,7 +4,7 @@
 
     let seedCapital = 20000
     let monthlyDeposit = 2000
-    let years = 15
+    let years = 20
     let annualInterestRate = 5
     let equity = 0
     let roundedTotal = 0
