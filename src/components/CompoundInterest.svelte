@@ -1,23 +1,13 @@
 <script>
-    import SeedCapitalInput from '../inputs/SeedCapitalInput.svelte'
-    import { afterUpdate } from 'svelte'
     import { format, roundTotal } from './../utils/format-utils'
 
     let seedCapital = 10000
     let years = 20
     let interestRate = 5
-    let total = calculateTotal()
 
-    function calculateTotal() {
-        let interestRateFraction = interestRate / 100
-        let compoundInterestFactor = Math.pow(1 + interestRateFraction, years)
-        let total = seedCapital * compoundInterestFactor
-        return roundTotal(total)
-    }
-
-    afterUpdate(() => {
-        total = calculateTotal()
-    })
+    $: interestRateFraction = interestRate / 100
+    $: compoundInterestFactor = Math.pow(1 + interestRateFraction, years)
+    $: total = roundTotal(seedCapital * compoundInterestFactor)
 </script>
 
 <label>

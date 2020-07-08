@@ -1,39 +1,20 @@
 <script>
-    import { afterUpdate } from 'svelte'
     import { format, roundTotal } from './../utils/format-utils'
 
     let seedCapital = 20000
     let monthlyDeposit = 2000
     let years = 20
     let annualInterestRate = 5
-    let equity = 0
-    let roundedTotal = 0
     let tax = 18.4625
-    let netAfterTax = 0
 
-    function calculateTotal() {
-        let monthlyInterestRateFraction = annualInterestRate / 100 / 12
-        let months = years * 12
-        let compoundInterestFactor = Math.pow(1 + monthlyInterestRateFraction, months)
-        let compoundedSeedCapital = seedCapital * compoundInterestFactor
-        let compoundedMonthlyDeposit = monthlyDeposit * (compoundInterestFactor - 1) / monthlyInterestRateFraction;
-        let total = compoundedSeedCapital + compoundedMonthlyDeposit
-        return roundTotal(total)
-    }
-
-    function calculateEquity() {
-        equity = seedCapital + monthlyDeposit * 12 * years
-    }
-
-    function calculateNetAfterTax() {
-        netAfterTax = roundTotal((roundedTotal - equity) * (1 - tax / 100) + equity)
-    }
-
-    afterUpdate(() => {
-        roundedTotal = calculateTotal()
-        calculateEquity()
-        calculateNetAfterTax()
-    })
+    $: equity = seedCapital + monthlyDeposit * 12 * years
+    $: monthlyInterestRateFraction = annualInterestRate / 100 / 12
+    $: months = years * 12
+    $: compoundInterestFactor = Math.pow(1 + monthlyInterestRateFraction, months)
+    $: compoundedSeedCapital = seedCapital * compoundInterestFactor
+    $: compoundedMonthlyDeposit = monthlyDeposit * (compoundInterestFactor - 1) / monthlyInterestRateFraction;
+    $: roundedTotal = roundTotal(compoundedSeedCapital + compoundedMonthlyDeposit)
+    $: netAfterTax = roundTotal((roundedTotal - equity) * (1 - tax / 100) + equity)
 </script>
 
 <label>

@@ -4,7 +4,6 @@
 
     function toggleGermanNumberFormat() {
         germanNumberFormatToggle.update(value => !value)
-        return isGermanNumberFormat;
     }
 
     let isGermanNumberFormat = true

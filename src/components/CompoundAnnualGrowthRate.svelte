@@ -1,16 +1,12 @@
 <script>
-    import { afterUpdate } from 'svelte'
     import { format } from './../utils/format-utils'
 
     let startPrice = 93.68
     let endPrice = 357.33
     let currentYear = new Date().getFullYear()
     let years = currentYear - 1993
-    let compoundAnnualGrowthRate = 5.00
 
-    afterUpdate(() => {
-        compoundAnnualGrowthRate = (Math.pow(endPrice / startPrice, 1 / years) - 1) * 100
-    })
+    $: compoundAnnualGrowthRate = (Math.pow(endPrice / startPrice, 1 / years) - 1) * 100
 </script>
 
 <label>
@@ -31,5 +27,6 @@
     <input type=range bind:value={years} min=1 max=50>
 </label>
 
-<p>With a start price of {format(startPrice)} € and an end price of {format(endPrice)} € the average annual interest rate over {years}
+<p>With a start price of {format(startPrice)} € and an end price of {format(endPrice)} € the average annual interest
+    rate over {years}
     years is {format(compoundAnnualGrowthRate)}%</p>
