@@ -30,4 +30,4 @@
 <p>With a start price of {format(startPrice)} €
     and an end price of {format(endPrice)} €
     the average annual interest rate over {years} years
-    is {format(compoundAnnualGrowthRate)}%</p>
+    is <b>{format(compoundAnnualGrowthRate)}%</b></p>

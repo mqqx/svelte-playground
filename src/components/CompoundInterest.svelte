@@ -31,5 +31,5 @@
 <p>{format(seedCapital)} €
     with {interestRate}% interest rate
     over {years} years
-    = {format(total)} €</p>
+    = <b>{format(total)}</b> €</p>
 

@@ -43,8 +43,8 @@
 
 <p>{format(seedCapital)} € with {annualInterestRate}% interest rate
     and {format(monthlyDeposit)} € monthly deposit, over {years} years
-    = {format(roundedTotal)} €</p>
+    = <b>{format(roundedTotal)} €</b></p>
 
 <p> After {format(tax)}% tax on the profits
-    this comes down to {format(netAfterTax)} € net
+    this comes down to <b>{format(netAfterTax)} € net</b>
     with an equity of {format(equity)} € </p>

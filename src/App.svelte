@@ -8,6 +8,35 @@
 </script>
 
 <style>
+    :global(body, input) {
+        background-color: #3e3e3e;
+        color: whitesmoke;
+    }
+
+    :global(a, a:visited) {
+        color: dodgerblue;
+    }
+
+    :global(input[type="range"]) {
+        overflow: hidden;
+        -webkit-appearance: none;
+        background-color: whitesmoke;
+    }
+
+    :global(input[type='range']::-webkit-slider-runnable-track) {
+        -webkit-appearance: none;
+        color: darkorange;
+    }
+
+    :global(input[type='range']::-webkit-slider-thumb) {
+        width: 10px;
+        -webkit-appearance: none;
+        height: 10px;
+        cursor: ew-resize;
+        background: #434343;
+        box-shadow: -80px 0 0 80px darkorange;
+    }
+
     ul li {
         display: inline
     }
