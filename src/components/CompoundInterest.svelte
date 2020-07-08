@@ -28,5 +28,8 @@
     <input type=range bind:value={years} min=1 max=50>
 </label>
 
-<p>{format(seedCapital)} € with {interestRate}% interest rate over {years} years = {format(total)} €</p>
+<p>{format(seedCapital)} €
+    with {interestRate}% interest rate
+    over {years} years
+    = {format(total)} €</p>
 

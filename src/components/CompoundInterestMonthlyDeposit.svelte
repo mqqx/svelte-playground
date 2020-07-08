@@ -45,5 +45,6 @@
     and {format(monthlyDeposit)} € monthly deposit, over {years} years
     = {format(roundedTotal)} €</p>
 
-<p> After {format(tax)}% tax on the profits this comes down to {format(netAfterTax)} € net with an equity
-    of {format(equity)} € </p>
+<p> After {format(tax)}% tax on the profits
+    this comes down to {format(netAfterTax)} € net
+    with an equity of {format(equity)} € </p>

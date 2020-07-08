@@ -27,6 +27,7 @@
     <input type=range bind:value={years} min=1 max=50>
 </label>
 
-<p>With a start price of {format(startPrice)} € and an end price of {format(endPrice)} € the average annual interest
-    rate over {years}
-    years is {format(compoundAnnualGrowthRate)}%</p>
+<p>With a start price of {format(startPrice)} €
+    and an end price of {format(endPrice)} €
+    the average annual interest rate over {years} years
+    is {format(compoundAnnualGrowthRate)}%</p>
