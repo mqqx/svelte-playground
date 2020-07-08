@@ -1,6 +1,6 @@
 <script>
     import { onDestroy } from 'svelte';
-    import { germanNumberFormatToggle } from './store'
+    import { germanNumberFormatToggle } from './../store'
 
     function toggleGermanNumberFormat() {
         germanNumberFormatToggle.update(value => !value)

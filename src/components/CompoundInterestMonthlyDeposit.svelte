@@ -1,6 +1,6 @@
 <script>
     import { afterUpdate } from 'svelte'
-    import { format, roundTotal } from './format-utils';
+    import { format, roundTotal } from './../utils/format-utils'
 
     let seedCapital = 20000
     let monthlyDeposit = 2000

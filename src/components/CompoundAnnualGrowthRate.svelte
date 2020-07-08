@@ -1,6 +1,6 @@
 <script>
     import { afterUpdate } from 'svelte'
-    import { format } from './format-utils';
+    import { format } from './../utils/format-utils'
 
     let startPrice = 93.68
     let endPrice = 357.33

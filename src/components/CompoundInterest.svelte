@@ -1,6 +1,7 @@
 <script>
+    import SeedCapitalInput from '../inputs/SeedCapitalInput.svelte'
     import { afterUpdate } from 'svelte'
-    import { format, roundTotal } from './format-utils';
+    import { format, roundTotal } from './../utils/format-utils'
 
     let seedCapital = 10000
     let years = 20

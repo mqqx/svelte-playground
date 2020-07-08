@@ -1,10 +1,10 @@
 <script>
-    import GermanNumberFormatToggle from './GermanNumberFormatToggle.svelte';
-    import CompoundAnnualGrowthRate from './CompoundAnnualGrowthRate.svelte'
-    import CompoundInterestMonthlyDeposit from './CompoundInterestMonthlyDeposit.svelte'
-    import CompoundInterest from './CompoundInterest.svelte'
+    import GermanNumberFormatToggle from './inputs/GermanNumberFormatToggle.svelte';
+    import CompoundAnnualGrowthRate from './components/CompoundAnnualGrowthRate.svelte'
+    import CompoundInterestMonthlyDeposit from './components/CompoundInterestMonthlyDeposit.svelte'
+    import CompoundInterest from './components/CompoundInterest.svelte'
 
-    export let menu = 2
+    export let menu = 1
 </script>
 
 <style>
