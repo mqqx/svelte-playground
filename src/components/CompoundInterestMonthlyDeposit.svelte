@@ -1,27 +1,24 @@
 <script>
+    import SeedCapitalInput from '../inputs/SeedCapitalInput.svelte';
     import { format, roundTotal } from './../utils/format-utils'
+    import { seedCapital } from './../store.js'
 
-    let seedCapital = 20000
     let monthlyDeposit = 2000
     let years = 20
     let annualInterestRate = 5
     let tax = 18.4625
 
-    $: equity = seedCapital + monthlyDeposit * 12 * years
+    $: equity = $seedCapital + monthlyDeposit * 12 * years
     $: monthlyInterestRateFraction = annualInterestRate / 100 / 12
     $: months = years * 12
     $: compoundInterestFactor = Math.pow(1 + monthlyInterestRateFraction, months)
-    $: compoundedSeedCapital = seedCapital * compoundInterestFactor
+    $: compoundedSeedCapital = $seedCapital * compoundInterestFactor
     $: compoundedMonthlyDeposit = monthlyDeposit * (compoundInterestFactor - 1) / monthlyInterestRateFraction;
     $: roundedTotal = roundTotal(compoundedSeedCapital + compoundedMonthlyDeposit)
     $: netAfterTax = roundTotal((roundedTotal - equity) * (1 - tax / 100) + equity)
 </script>
 
-<label>
-    seed capital
-    <input type=number bind:value={seedCapital} min=0 max=1000000> €
-    <input type=range bind:value={seedCapital} min=0 max=1000000>
-</label>
+<SeedCapitalInput/>
 
 <label>
     monthly deposit
@@ -41,7 +38,7 @@
     <input type=range bind:value={years} min=1 max=50>
 </label>
 
-<p>{format(seedCapital)} € with {annualInterestRate}% interest rate
+<p>{format($seedCapital)} € with {annualInterestRate}% interest rate
     and {format(monthlyDeposit)} € monthly deposit, over {years} years
     = <b>{format(roundedTotal)} €</b></p>
 

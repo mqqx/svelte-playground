@@ -1,20 +1,17 @@
 <script>
+    import SeedCapitalInput from '../inputs/SeedCapitalInput.svelte';
     import { format, roundTotal } from './../utils/format-utils'
+    import { seedCapital } from './../store.js'
 
-    let seedCapital = 10000
     let years = 20
     let interestRate = 5
 
     $: interestRateFraction = interestRate / 100
     $: compoundInterestFactor = Math.pow(1 + interestRateFraction, years)
-    $: total = roundTotal(seedCapital * compoundInterestFactor)
+    $: total = roundTotal($seedCapital * compoundInterestFactor)
 </script>
 
-<label>
-    seed capital
-    <input type=number bind:value={seedCapital} min=1 max=100000> €
-    <input type=range bind:value={seedCapital} min=1 max=100000>
-</label>
+<SeedCapitalInput/>
 
 <label>
     interest rate
@@ -28,8 +25,7 @@
     <input type=range bind:value={years} min=1 max=50>
 </label>
 
-<p>{format(seedCapital)} €
+<p>{format($seedCapital)} €
     with {interestRate}% interest rate
     over {years} years
     = <b>{format(total)}</b> €</p>
-
