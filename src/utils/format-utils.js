@@ -1,8 +1,8 @@
 import { get } from 'svelte/store'
-import { germanNumberFormatToggle } from './../store'
+import { isGermanNumberFormat } from './../store'
 
 export function format(number) {
-    return get(germanNumberFormatToggle)
+    return get(isGermanNumberFormat)
         ? number.toLocaleString('de-DE')
         : number.toLocaleString()
 }

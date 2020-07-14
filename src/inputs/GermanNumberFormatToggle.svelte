@@ -1,26 +1,12 @@
 <script>
-    import { onDestroy } from 'svelte';
-    import { germanNumberFormatToggle } from './../store'
-
-    function toggleGermanNumberFormat() {
-        germanNumberFormatToggle.update(value => !value)
-    }
-
-    let isGermanNumberFormat = true
-
-    const unsubscribe = germanNumberFormatToggle.subscribe(value => {
-        isGermanNumberFormat = value
-    })
-
-    onDestroy(unsubscribe)
+    import { isGermanNumberFormat } from './../store'
 </script>
 
 <label>
     <input type=checkbox
-           bind:checked={isGermanNumberFormat}
-           on:click={toggleGermanNumberFormat}>
+           bind:checked={$isGermanNumberFormat}>
     German number format
-    {#if isGermanNumberFormat}
+    {#if $isGermanNumberFormat}
         on
     {:else}
         off
