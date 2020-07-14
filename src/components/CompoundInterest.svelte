@@ -11,9 +11,7 @@
 </script>
 
 <SeedCapitalInput/>
-
 <InterestRateInput/>
-
 <YearInput/>
 
 <p>{format($seedCapital)} €

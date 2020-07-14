@@ -19,11 +19,8 @@
 </script>
 
 <SeedCapitalInput/>
-
 <MonthlyDepositInput/>
-
 <InterestRateInput/>
-
 <YearInput/>
 
 <p>{format($seedCapital)} € with {format($interestRate)}% interest rate
