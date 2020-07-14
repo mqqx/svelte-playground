@@ -4,7 +4,7 @@
     import CompoundInterestMonthlyDeposit from './components/CompoundInterestMonthlyDeposit.svelte'
     import CompoundInterest from './components/CompoundInterest.svelte'
 
-    export let menu = 1
+    let menu = 1
 </script>
 
 <style>
