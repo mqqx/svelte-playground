@@ -1,12 +1,14 @@
 <script>
+    import YearInput from '../inputs/YearInput.svelte';
     import { format } from './../utils/format-utils'
+    import { years } from './../store.js'
 
     let startPrice = 93.68
     let endPrice = 357.33
     let currentYear = new Date().getFullYear()
-    let years = currentYear - 1993
+    years.update(n => currentYear - 1993)
 
-    $: compoundAnnualGrowthRate = (Math.pow(endPrice / startPrice, 1 / years) - 1) * 100
+    $: compoundAnnualGrowthRate = (Math.pow(endPrice / startPrice, 1 / $years) - 1) * 100
 </script>
 
 <label>
@@ -21,13 +23,9 @@
     <input type=range bind:value={endPrice} min=1 max=10000000 step=0.01>
 </label>
 
-<label>
-    years
-    <input type=number bind:value={years} min=1 max=50>
-    <input type=range bind:value={years} min=1 max=50>
-</label>
+<YearInput/>
 
 <p>With a start price of {format(startPrice)} €
     and an end price of {format(endPrice)} €
-    the average annual interest rate over {years} years
+    the average annual interest rate over {$years} years
     is <b>{format(compoundAnnualGrowthRate)}%</b></p>
