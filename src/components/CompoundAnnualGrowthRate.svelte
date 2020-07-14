@@ -11,13 +11,13 @@
 
 <label>
     start price
-    <input type=number bind:value={startPrice} min=1 max=10000000 step=0.01>
+    <input type=number bind:value={startPrice} min=1 max=10000000 step=0.01> €
     <input type=range bind:value={startPrice} min=1 max=10000000 step=0.01>
 </label>
 
 <label>
     end price
-    <input type=number bind:value={endPrice} min=1 max=10000000 step=0.01>
+    <input type=number bind:value={endPrice} min=1 max=10000000 step=0.01> €
     <input type=range bind:value={endPrice} min=1 max=10000000 step=0.01>
 </label>
 

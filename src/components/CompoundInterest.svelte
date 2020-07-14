@@ -12,13 +12,13 @@
 
 <label>
     seed capital
-    <input type=number bind:value={seedCapital} min=1 max=100000>
+    <input type=number bind:value={seedCapital} min=1 max=100000> €
     <input type=range bind:value={seedCapital} min=1 max=100000>
 </label>
 
 <label>
     interest rate
-    <input type=number bind:value={interestRate} min=0 max=50 step=0.1>
+    <input type=number bind:value={interestRate} min=0 max=50 step=0.1> %
     <input type=range bind:value={interestRate} min=0 max=50 step=0.1>
 </label>
 
