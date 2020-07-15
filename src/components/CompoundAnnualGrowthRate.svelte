@@ -1,5 +1,5 @@
 <script>
-    import YearInput from '../inputs/YearInput.svelte';
+    import YearInput from '../inputs/YearInput.svelte'
     import { format } from './../utils/format-utils'
     import { years } from './../store.js'
 
