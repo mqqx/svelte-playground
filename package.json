@@ -17,5 +17,9 @@
   },
   "dependencies": {
     "sirv-cli": "^0.4.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mqqx/svelte-playground.git"
   }
 }
