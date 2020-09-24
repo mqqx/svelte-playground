@@ -21,5 +21,6 @@
   "repository": {
     "type": "git",
     "url": "git://github.com/mqqx/svelte-playground.git"
-  }
+  },
+  "license": "MIT"
 }
