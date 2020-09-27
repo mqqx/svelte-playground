@@ -1,10 +1,11 @@
 <script>
-    import GermanNumberFormatToggle from './inputs/GermanNumberFormatToggle.svelte';
+    import GermanNumberFormatToggle from './inputs/GermanNumberFormatToggle.svelte'
     import CompoundAnnualGrowthRate from './components/CompoundAnnualGrowthRate.svelte'
     import CompoundInterestMonthlyDeposit from './components/CompoundInterestMonthlyDeposit.svelte'
     import CompoundInterest from './components/CompoundInterest.svelte'
+    import GrossNetWage from './components/GrossNetWage.svelte'
 
-    let menu = 1
+    let menu = 4
 </script>
 
 <style>
@@ -48,6 +49,8 @@
     <li><a href="/" on:click|preventDefault={() => (menu = 2)}>Compound interest with monthly contribution</a></li>
     |
     <li><a href="/" on:click|preventDefault={() => (menu = 3)}>Compound annual growth rate</a></li>
+    |
+    <li><a href="/" on:click|preventDefault={() => (menu = 4)}>Gross net wage</a></li>
 </ul>
 
 <GermanNumberFormatToggle/>
@@ -58,6 +61,8 @@
     <CompoundInterestMonthlyDeposit/>
 {:else if menu === 3}
     <CompoundAnnualGrowthRate/>
+{:else if menu === 4}
+    <GrossNetWage/>
 {:else}
     <h1>
         Page Not Found
