@@ -1,11 +1,12 @@
 <script>
-    import GermanNumberFormatToggle from './inputs/GermanNumberFormatToggle.svelte'
     import CompoundAnnualGrowthRate from './components/CompoundAnnualGrowthRate.svelte'
-    import CompoundInterestMonthlyDeposit from './components/CompoundInterestMonthlyDeposit.svelte'
     import CompoundInterest from './components/CompoundInterest.svelte'
+    import CompoundInterestMonthlyDeposit from './components/CompoundInterestMonthlyDeposit.svelte'
     import GrossNetWage from './components/GrossNetWage.svelte'
+    import RandomGreenGrid from './components/RandomGreenGrid.svelte';
+    import GermanNumberFormatToggle from './inputs/GermanNumberFormatToggle.svelte'
 
-    let menu = 4
+    let menu = 5
 </script>
 
 <style>
@@ -51,9 +52,13 @@
     <li><a href="/" on:click|preventDefault={() => (menu = 3)}>Compound annual growth rate</a></li>
     |
     <li><a href="/" on:click|preventDefault={() => (menu = 4)}>Gross net wage</a></li>
+    |
+    <li><a href="/" on:click|preventDefault={() => (menu = 5)}>Random green grid</a></li>
 </ul>
 
-<GermanNumberFormatToggle/>
+{#if menu >= 1 && menu <= 4}
+    <GermanNumberFormatToggle/>
+{/if}
 
 {#if menu === 1}
     <CompoundInterest/>
@@ -63,6 +68,8 @@
     <CompoundAnnualGrowthRate/>
 {:else if menu === 4}
     <GrossNetWage/>
+{:else if menu === 5}
+    <RandomGreenGrid/>
 {:else}
     <h1>
         Page Not Found
