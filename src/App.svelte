@@ -7,7 +7,6 @@
     import GermanNumberFormatToggle from './inputs/GermanNumberFormatToggle.svelte'
 
     let menu = 5
-    let bersibers = 123
 </script>
 
 <style>
