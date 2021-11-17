@@ -237,6 +237,7 @@
     <p>
         <b>Dr. Sommer antwortet:</b>
     </p>
+    <br>
     <p>
         {quotes[nextIndex].quote}
     </p>
