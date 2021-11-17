@@ -2,11 +2,12 @@
     import CompoundAnnualGrowthRate from './components/CompoundAnnualGrowthRate.svelte'
     import CompoundInterest from './components/CompoundInterest.svelte'
     import CompoundInterestMonthlyDeposit from './components/CompoundInterestMonthlyDeposit.svelte'
-    import GrossNetWage from './components/GrossNetWage.svelte'
-    import RandomGreenGrid from './components/RandomGreenGrid.svelte';
     import GermanNumberFormatToggle from './inputs/GermanNumberFormatToggle.svelte'
+    import GrossNetWage from './components/GrossNetWage.svelte'
+    import RandomDrSommerQuote from './components/RandomDrSommerQuote.svelte';
+    import RandomGreenGrid from './components/RandomGreenGrid.svelte';
 
-    let menu = 5
+    let menu = 6
 </script>
 
 <style>
@@ -54,6 +55,8 @@
     <li><a href="/" on:click|preventDefault={() => (menu = 4)}>Gross net wage</a></li>
     |
     <li><a href="/" on:click|preventDefault={() => (menu = 5)}>Random green grid</a></li>
+    |
+    <li><a href="/" on:click|preventDefault={() => (menu = 6)}>Random Dr. Sommer quote</a></li>
 </ul>
 
 {#if menu >= 1 && menu <= 4}
@@ -70,6 +73,8 @@
     <GrossNetWage/>
 {:else if menu === 5}
     <RandomGreenGrid/>
+{:else if menu === 6}
+    <RandomDrSommerQuote/>
 {:else}
     <h1>
         Page Not Found
