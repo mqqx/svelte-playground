@@ -1,5 +1,5 @@
 <script>
-    import { interestRate } from './../store.js'
+    import { interestRate } from '../../store.js'
 </script>
 
 <label>

@@ -3,8 +3,8 @@
     import MonthlyDepositInput from '../inputs/MonthlyDepositInput.svelte'
     import SeedCapitalInput from '../inputs/SeedCapitalInput.svelte'
     import YearInput from '../inputs/YearInput.svelte'
-    import { format, roundTotal } from './../utils/format-utils'
-    import { interestRate, monthlyDeposit, seedCapital, years } from './../store.js'
+    import { format, roundTotal } from '../utils/format-utils'
+    import { interestRate, monthlyDeposit, seedCapital, years } from '../../store.js'
 
     let tax = 18.4625
 

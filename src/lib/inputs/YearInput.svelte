@@ -1,5 +1,5 @@
 <script>
-    import { years } from './../store.js'
+    import { years } from '../../store.js'
 </script>
 
 <label>

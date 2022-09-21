@@ -2,8 +2,8 @@
     import InterestRateInput from '../inputs/InterestRateInput.svelte'
     import SeedCapitalInput from '../inputs/SeedCapitalInput.svelte'
     import YearInput from '../inputs/YearInput.svelte'
-    import { format, roundTotal } from './../utils/format-utils'
-    import { interestRate, seedCapital, years } from './../store.js'
+    import { format, roundTotal } from '../utils/format-utils'
+    import { interestRate, seedCapital, years } from '../../store.js'
 
     $: interestRateFraction = $interestRate / 100
     $: compoundInterestFactor = Math.pow(1 + interestRateFraction, $years)

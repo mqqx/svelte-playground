@@ -1,5 +1,5 @@
 <script>
-    import { format, roundTotal } from './../utils/format-utils'
+    import { format, roundTotal } from '../utils/format-utils'
 
     const TAX_FREE_ALLOWANCE = 9408
     const FIRST_PROGRESSION_LIMIT = 14532

@@ -1,5 +1,5 @@
 <script>
-    import { monthlyDeposit } from './../store.js'
+    import { monthlyDeposit } from '../../store.js'
 </script>
 
 <label>

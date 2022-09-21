@@ -1,7 +1,7 @@
 <script>
     import YearInput from '../inputs/YearInput.svelte'
-    import { format } from './../utils/format-utils'
-    import { years } from './../store.js'
+    import { format } from '../utils/format-utils'
+    import { years } from '../../store.js'
 
     let startPrice = 93.68
     let endPrice = 357.33

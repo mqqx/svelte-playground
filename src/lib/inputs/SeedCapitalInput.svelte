@@ -1,5 +1,5 @@
 <script>
-    import { seedCapital } from './../store.js'
+    import { seedCapital } from '../../store.js'
 </script>
 
 <label>

@@ -1,11 +1,11 @@
 <script>
-    import CompoundAnnualGrowthRate from './components/CompoundAnnualGrowthRate.svelte'
-    import CompoundInterest from './components/CompoundInterest.svelte'
-    import CompoundInterestMonthlyDeposit from './components/CompoundInterestMonthlyDeposit.svelte'
-    import GermanNumberFormatToggle from './inputs/GermanNumberFormatToggle.svelte'
-    import GrossNetWage from './components/GrossNetWage.svelte'
-    import RandomDrSommerQuote from './components/RandomDrSommerQuote.svelte';
-    import RandomGreenGrid from './components/RandomGreenGrid.svelte';
+    import CompoundAnnualGrowthRate from './lib/components/CompoundAnnualGrowthRate.svelte'
+    import CompoundInterest from './lib/components/CompoundInterest.svelte'
+    import CompoundInterestMonthlyDeposit from './lib/components/CompoundInterestMonthlyDeposit.svelte'
+    import GermanNumberFormatToggle from './lib/inputs/GermanNumberFormatToggle.svelte'
+    import GrossNetWage from './lib/components/GrossNetWage.svelte'
+    import RandomDrSommerQuote from './lib/components/RandomDrSommerQuote.svelte';
+    import RandomGreenGrid from './lib/components/RandomGreenGrid.svelte';
 
     let menu = 6
 </script>

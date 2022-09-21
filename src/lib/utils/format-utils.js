@@ -1,5 +1,5 @@
 import { get } from 'svelte/store'
-import { isGermanNumberFormat } from './../store'
+import { isGermanNumberFormat } from '../../store'
 
 export function format(number) {
     return get(isGermanNumberFormat)

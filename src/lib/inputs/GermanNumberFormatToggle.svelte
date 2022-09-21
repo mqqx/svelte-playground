@@ -1,5 +1,5 @@
 <script>
-    import { isGermanNumberFormat } from './../store'
+    import { isGermanNumberFormat } from '../../store'
 </script>
 
 <label>
