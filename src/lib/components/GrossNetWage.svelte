@@ -1,22 +1,22 @@
-<script>
+<script lang="ts">
     import { format, roundTotal } from '../utils/format-utils'
 
-    const TAX_FREE_ALLOWANCE = 9408
-    const FIRST_PROGRESSION_LIMIT = 14532
-    const SECOND_PROGRESSION_LIMIT = 57051
-    const FLAT_42_LIMIT = 270500
+    const TAX_FREE_ALLOWANCE: number = 9408
+    const FIRST_PROGRESSION_LIMIT: number = 14532
+    const SECOND_PROGRESSION_LIMIT: number = 57051
+    const FLAT_42_LIMIT: number = 270500
 
     //social security contributions
-    const HEALTH_INSURANCE_LIMIT = 56250
-    const HEALTH_INSURANCE_PERCENTAGE = 7.3
-    const ANNUITY_LIMIT_WEST = 82800
-    const ANNUITY_LIMIT_OST = 77400
-    const UNEMPLOYMENT_INSURANCE_LIMIT_WEST = ANNUITY_LIMIT_WEST
-    const UNEMPLOYMENT_INSURANCE_LIMIT_OST = ANNUITY_LIMIT_OST
+    const HEALTH_INSURANCE_LIMIT: number = 56250
+    const HEALTH_INSURANCE_PERCENTAGE: number = 7.3
+    const ANNUITY_LIMIT_WEST: number = 82800
+    const ANNUITY_LIMIT_OST: number = 77400
+    const UNEMPLOYMENT_INSURANCE_LIMIT_WEST: number = ANNUITY_LIMIT_WEST
+    const UNEMPLOYMENT_INSURANCE_LIMIT_OST: number = ANNUITY_LIMIT_OST
 
 
-    let salary = 40000
-    let selectedTaxClass
+    let salary: number = 40000
+    let selectedTaxClass: {}
     let taxClasses = [
         { id: 1, text: 'category 1' },
         { id: 2, text: 'category 2' },
@@ -35,12 +35,12 @@
     }
 
     function calculateTax() {
-        function calculateProgressive(taxLimit, factor, addition) {
+        function calculateProgressive(taxLimit: number, factor: number, addition: number) {
             let salaryToTaxFraction = (salary - taxLimit) / 10000
             return (factor * salaryToTaxFraction + addition) * salaryToTaxFraction
         }
 
-        function calculateFlat(taxPercentage, progressiveSum) {
+        function calculateFlat(taxPercentage: number, progressiveSum: number) {
             return taxPercentage * salary - progressiveSum;
         }
 
