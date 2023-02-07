@@ -69,7 +69,7 @@
         -webkit-appearance: none;
         height: 10px;
         cursor: ew-resize;
-        background: #434343;
+        background: dodgerblue;
         box-shadow: -80px 0 0 80px darkorange;
     }
 
