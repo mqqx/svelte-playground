@@ -1,6 +1,5 @@
 <script lang="ts">
     import RandomGreenGrid from "./lib/components/RandomGreenGrid.svelte";
-    import RandomDrSommerQuote from "./lib/components/RandomDrSommerQuote.svelte";
     import GrossNetWage from "./lib/components/GrossNetWage.svelte";
     import CompoundAnnualGrowthRate from "./lib/components/CompoundAnnualGrowthRate.svelte";
     import CompoundInterestMonthlyDeposit from "./lib/components/CompoundInterestMonthlyDeposit.svelte";
@@ -22,9 +21,7 @@
         |
         <li><a href="/" on:click|preventDefault={() => (menu = 5)}>Random green grid</a></li>
         |
-        <li><a href="/" on:click|preventDefault={() => (menu = 6)}>Random Dr. Sommer quote</a></li>
-        |
-        <li><a href="/" on:click|preventDefault={() => (menu = 7)}>Counter</a></li>
+        <li><a href="/" on:click|preventDefault={() => (menu = 6)}>Counter</a></li>
     </ul>
 
     {#if menu === 1}
@@ -38,8 +35,6 @@
     {:else if menu === 5}
         <RandomGreenGrid/>
     {:else if menu === 6}
-        <RandomDrSommerQuote/>
-    {:else if menu === 7}
         <Counter/>
     {:else}
         <h1>
