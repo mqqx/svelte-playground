@@ -12,4 +12,3 @@ Trying out features of the svelte library by implementing different use cases li
 | Install Package  | 📦 Install Package  |
 | Fix Readme       | 📚 Fix Readme       |
 | Update Version   | 🌼 Update Version   |
-| New Template     | 🎉 New Template     |
