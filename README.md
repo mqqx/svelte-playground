@@ -2,6 +2,10 @@
 
 Trying out features of the svelte library by implementing different use cases like compound interest calculation or a random grid generator.
 
+## GitHub Pages Deployment
+
+https://mqqx.github.io/svelte-playground/
+
 ## 📬 Recommended Commit Message Titles
 
 | When             | Commit Message      |
