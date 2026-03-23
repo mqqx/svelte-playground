@@ -4,18 +4,18 @@
     import SeedCapitalInput from '../inputs/SeedCapitalInput.svelte'
     import YearInput from '../inputs/YearInput.svelte'
     import { format, roundTotal } from '../utils/format-utils'
-    import { interestRate, monthlyDeposit, seedCapital, years } from '../utils/store'
+    import { store } from '../utils/store.svelte'
 
-    let tax = 18.4625
+    const tax = 18.4625
 
-    $: months = $years * 12
-    $: equity = $seedCapital + $monthlyDeposit * months
-    $: monthlyInterestRateFraction = $interestRate / 100 / 12
-    $: compoundInterestFactor = Math.pow(1 + monthlyInterestRateFraction, months)
-    $: compoundedSeedCapital = $seedCapital * compoundInterestFactor
-    $: compoundedMonthlyDeposit = $monthlyDeposit * (compoundInterestFactor - 1) / monthlyInterestRateFraction;
-    $: roundedTotal = roundTotal(compoundedSeedCapital + compoundedMonthlyDeposit)
-    $: netAfterTax = roundTotal((roundedTotal - equity) * (1 - tax / 100) + equity)
+    const months = $derived(store.years * 12)
+    const equity = $derived(store.seedCapital + store.monthlyDeposit * months)
+    const monthlyInterestRateFraction = $derived(store.interestRate / 100 / 12)
+    const compoundInterestFactor = $derived(Math.pow(1 + monthlyInterestRateFraction, months))
+    const compoundedSeedCapital = $derived(store.seedCapital * compoundInterestFactor)
+    const compoundedMonthlyDeposit = $derived(store.monthlyDeposit * (compoundInterestFactor - 1) / monthlyInterestRateFraction)
+    const roundedTotal = $derived(roundTotal(compoundedSeedCapital + compoundedMonthlyDeposit))
+    const netAfterTax = $derived(roundTotal((roundedTotal - equity) * (1 - tax / 100) + equity))
 </script>
 
 <SeedCapitalInput/>
@@ -23,8 +23,8 @@
 <InterestRateInput/>
 <YearInput/>
 
-<p>{format($seedCapital)} € with {format($interestRate)}% interest rate
-    and {format($monthlyDeposit)} € monthly deposit, over {$years} years
+<p>{format(store.seedCapital)} € with {format(store.interestRate)}% interest rate
+    and {format(store.monthlyDeposit)} € monthly deposit, over {store.years} years
     = <b>{format(roundedTotal)} €</b></p>
 
 <p> After {format(tax)}% tax on the profits

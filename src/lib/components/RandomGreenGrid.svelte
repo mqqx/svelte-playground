@@ -1,20 +1,23 @@
 <script lang="ts">
-    let x: number = 20
-    let y: number = 20
-    let randomNumberIntervalStart: number = 1
-    let randomNumberIntervalEnd: number = 100
-    let grid: number[][] = []
+    let x = $state(20)
+    let y = $state(20)
+    let randomNumberIntervalStart = $state(1)
+    let randomNumberIntervalEnd = $state(100)
+    let grid: number[][] = $state([])
 
-    $: populateNumbers(x, y, randomNumberIntervalStart, randomNumberIntervalEnd)
+    $effect(() => {
+        populateNumbers(x, y, randomNumberIntervalStart, randomNumberIntervalEnd)
+    })
 
     function populateNumbers(rows: number, columns: number, start: number, end: number) {
-        grid = []
+        const newGrid: number[][] = []
         for (let i = 0; i < rows; i++) {
-            grid[i] = [];
+            newGrid[i] = [];
             for (let j = 0; j < columns; j++) {
-                grid[i][j] = randomNumber(start, end);
+                newGrid[i][j] = randomNumber(start, end);
             }
         }
+        grid = newGrid
     }
 
     function randomGreenColor(randomValue: number) {
@@ -54,12 +57,14 @@
 
 <div>
 	<table class="table-center">
-		{#each Array(x) as _, i}
-			<tr>
-				{#each Array(y) as _, j}
-					<td style="background-color: {randomGreenColor(grid[i][j])}">{grid[i][j]}</td>
-				{/each}
-			</tr>
-		{/each}
+		<tbody>
+			{#each Array(x) as _, i}
+				<tr>
+					{#each Array(y) as _, j}
+						<td style="background-color: {randomGreenColor(grid[i]?.[j] ?? 0)}">{grid[i]?.[j] ?? 0}</td>
+					{/each}
+				</tr>
+			{/each}
+		</tbody>
 	</table>
 </div>

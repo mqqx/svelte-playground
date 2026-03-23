@@ -3,18 +3,18 @@
     import SeedCapitalInput from '../inputs/SeedCapitalInput.svelte'
     import YearInput from '../inputs/YearInput.svelte'
     import { format, roundTotal } from '../utils/format-utils'
-    import { interestRate, seedCapital, years } from '../utils/store'
+    import { store } from '../utils/store.svelte'
 
-    $: interestRateFraction = $interestRate / 100
-    $: compoundInterestFactor = Math.pow(1 + interestRateFraction, $years)
-    $: total = roundTotal($seedCapital * compoundInterestFactor)
+    const interestRateFraction = $derived(store.interestRate / 100)
+    const compoundInterestFactor = $derived(Math.pow(1 + interestRateFraction, store.years))
+    const total = $derived(roundTotal(store.seedCapital * compoundInterestFactor))
 </script>
 
 <SeedCapitalInput/>
 <InterestRateInput/>
 <YearInput/>
 
-<p>{format($seedCapital)} €
-    with {format($interestRate)}% interest rate
-    over {$years} years
+<p>{format(store.seedCapital)} €
+    with {format(store.interestRate)}% interest rate
+    over {store.years} years
     = <b>{format(total)}</b> €</p>

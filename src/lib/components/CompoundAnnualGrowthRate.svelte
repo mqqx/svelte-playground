@@ -1,14 +1,14 @@
 <script lang="ts">
     import YearInput from '../inputs/YearInput.svelte'
     import { format } from '../utils/format-utils'
-    import { years } from '../utils/store'
+    import { store } from '../utils/store.svelte'
 
-    let startPrice = 93.68
-    let endPrice = 357.33
+    let startPrice = $state(93.68)
+    let endPrice = $state(357.33)
     let currentYear = new Date().getFullYear()
-    years.update(() => currentYear - 1993)
+    store.years = currentYear - 1993
 
-    $: compoundAnnualGrowthRate = (Math.pow(endPrice / startPrice, 1 / $years) - 1) * 100
+    const compoundAnnualGrowthRate = $derived((Math.pow(endPrice / startPrice, 1 / store.years) - 1) * 100)
 </script>
 
 <p>
@@ -31,5 +31,5 @@
 
 <p>With a start price of {format(startPrice)} €
 	and an end price of {format(endPrice)} €
-	the average annual interest rate over {$years} years
+	the average annual interest rate over {store.years} years
 	is <b>{format(compoundAnnualGrowthRate)}%</b></p>

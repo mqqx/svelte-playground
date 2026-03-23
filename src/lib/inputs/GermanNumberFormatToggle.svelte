@@ -1,13 +1,13 @@
 <!-- could be used to ensure german number format, re-calculation needs to be triggered after toggle -->
 <script lang="ts">
-    import { isGermanNumberFormat } from '../utils/store'
+    import { store } from '../utils/store.svelte'
 </script>
 
 <label>
 	<input type=checkbox
-		   bind:checked={$isGermanNumberFormat}>
+		   bind:checked={store.isGermanNumberFormat}>
 	German number format
-	{#if $isGermanNumberFormat}
+	{#if store.isGermanNumberFormat}
 		on
 	{:else}
 		off

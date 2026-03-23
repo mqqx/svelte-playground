@@ -6,22 +6,22 @@
     import CompoundInterest from "./lib/components/CompoundInterest.svelte";
     import Counter from "./lib/components/Counter.svelte";
 
-    let menu: number = 5
+    let menu = $state(5)
 </script>
 
 <main>
     <ul>
-        <li><a href="/" on:click|preventDefault={() => (menu = 1)}>Compound interest</a></li>
+        <li><a href="/" onclick={(e) => { e.preventDefault(); menu = 1 }}>Compound interest</a></li>
         |
-        <li><a href="/" on:click|preventDefault={() => (menu = 2)}>Compound interest with monthly contribution</a></li>
+        <li><a href="/" onclick={(e) => { e.preventDefault(); menu = 2 }}>Compound interest with monthly contribution</a></li>
         |
-        <li><a href="/" on:click|preventDefault={() => (menu = 3)}>Compound annual growth rate</a></li>
+        <li><a href="/" onclick={(e) => { e.preventDefault(); menu = 3 }}>Compound annual growth rate</a></li>
         |
-        <li><a href="/" on:click|preventDefault={() => (menu = 4)}>Gross net wage</a></li>
+        <li><a href="/" onclick={(e) => { e.preventDefault(); menu = 4 }}>Gross net wage</a></li>
         |
-        <li><a href="/" on:click|preventDefault={() => (menu = 5)}>Random green grid</a></li>
+        <li><a href="/" onclick={(e) => { e.preventDefault(); menu = 5 }}>Random green grid</a></li>
         |
-        <li><a href="/" on:click|preventDefault={() => (menu = 6)}>Counter</a></li>
+        <li><a href="/" onclick={(e) => { e.preventDefault(); menu = 6 }}>Counter</a></li>
     </ul>
 
     {#if menu === 1}

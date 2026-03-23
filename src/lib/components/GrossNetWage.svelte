@@ -14,9 +14,8 @@
     const UNEMPLOYMENT_INSURANCE_LIMIT_WEST: number = ANNUITY_LIMIT_WEST
     const UNEMPLOYMENT_INSURANCE_LIMIT_OST: number = ANNUITY_LIMIT_OST
 
-
-    let salary: number = 40000
-    let selectedTaxClass: {}
+    let salary = $state(40000)
+    let selectedTaxClass: {} = $state({})
     let taxClasses = [
         { id: 1, text: 'category 1' },
         { id: 2, text: 'category 2' },
@@ -26,9 +25,9 @@
         { id: 6, text: 'category 6' }
     ]
 
-    $: socialSecurity = calculateSocialSecurity()
-    $: tax = calculateTax()
-    $: netSalary = roundTotal(salary - tax - socialSecurity)
+    const socialSecurity = $derived(calculateSocialSecurity())
+    const tax = $derived(calculateTax())
+    const netSalary = $derived(roundTotal(salary - tax - socialSecurity))
 
     function calculateSocialSecurity() {
         return 0;
