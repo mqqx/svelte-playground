@@ -9,7 +9,6 @@ describe('CompoundInterestMonthlyDeposit', () => {
         store.monthlyDeposit = 2000
         store.interestRate = 5
         store.years = 20
-        store.isGermanNumberFormat = false
     })
 
     it('shouldDisplayAllInputs_whenRendered', () => {

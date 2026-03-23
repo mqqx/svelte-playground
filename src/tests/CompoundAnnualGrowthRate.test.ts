@@ -5,7 +5,7 @@ import { store } from '../lib/utils/store.svelte'
 
 describe('CompoundAnnualGrowthRate', () => {
     beforeEach(() => {
-        store.isGermanNumberFormat = false
+        store.years = 20
     })
 
     it('shouldDisplayInputs_whenRendered', () => {

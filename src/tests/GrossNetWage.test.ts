@@ -1,11 +1,9 @@
 import { describe, it, expect } from 'vitest'
 import { render, fireEvent } from '@testing-library/svelte'
 import GrossNetWage from '../lib/components/GrossNetWage.svelte'
-import { store } from '../lib/utils/store.svelte'
 
 describe('GrossNetWage', () => {
     it('shouldDisplaySalaryInput_whenRendered', () => {
-        store.isGermanNumberFormat = false
         const { container } = render(GrossNetWage)
         const numberInput = container.querySelector('input[type="number"]') as HTMLInputElement
 
@@ -23,7 +21,6 @@ describe('GrossNetWage', () => {
     })
 
     it('shouldCalculateNetSalary_whenDefaultSalary', () => {
-        store.isGermanNumberFormat = false
         const { container } = render(GrossNetWage)
         const text = container.querySelector('p:last-of-type')?.textContent
 
@@ -33,7 +30,6 @@ describe('GrossNetWage', () => {
     })
 
     it('shouldReturnZeroTax_whenSalaryBelowAllowance', async () => {
-        store.isGermanNumberFormat = false
         const { container } = render(GrossNetWage)
         const numberInput = container.querySelector('input[type="number"]') as HTMLInputElement
 

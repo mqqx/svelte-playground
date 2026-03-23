@@ -8,7 +8,6 @@ describe('CompoundInterest', () => {
         store.seedCapital = 20000
         store.interestRate = 5
         store.years = 20
-        store.isGermanNumberFormat = false
     })
 
     it('shouldCalculateCompoundInterest_whenDefaultValues', async () => {
