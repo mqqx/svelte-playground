@@ -24,8 +24,7 @@ describe('CompoundInterestMonthlyDeposit', () => {
         await new Promise(r => setTimeout(r, 0))
 
         const paragraphs = container.querySelectorAll('p')
-        // First result paragraph (after 4 input paragraphs)
-        const totalText = paragraphs[4]?.textContent
+        const totalText = paragraphs[0]?.textContent
 
         expect(totalText).toContain('20,000')
         expect(totalText).toContain('2,000')

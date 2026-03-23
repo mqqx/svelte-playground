@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { render, fireEvent } from '@testing-library/svelte'
 import GrossNetWage from '../lib/components/GrossNetWage.svelte'
+import { formatCurrency } from '../lib/utils/format-utils'
 
 describe('GrossNetWage', () => {
     it('shouldDisplaySalaryInput_whenRendered', () => {
@@ -39,6 +40,6 @@ describe('GrossNetWage', () => {
         const text = container.querySelector('p:last-of-type')?.textContent
         // Below 9408 tax-free allowance, tax should be 0
         expect(text).toContain('5,000')
-        expect(text).toContain('0 € tax')
+        expect(text).toContain(`${formatCurrency(0)} tax`)
     })
 })

@@ -14,15 +14,14 @@ describe('App', () => {
         expect(getByText('Counter')).toBeInTheDocument()
     })
 
-    it('shouldShowRandomGreenGrid_whenDefaultMenu', async () => {
+    it('shouldShowCompoundInterestMonthly_whenDefaultMenu', async () => {
         const { container } = render(App)
         await new Promise(r => setTimeout(r, 0))
 
-        const table = container.querySelector('table')
-        expect(table).toBeInTheDocument()
+        expect(container.textContent).toContain('monthly deposit')
     })
 
-    it('shouldSwitchToCounter_whenCounterLinkClicked', async () => {
+    it('shouldSwitchToCounter_whenCounterButtonClicked', async () => {
         const { getByText } = render(App)
 
         await fireEvent.click(getByText('Counter'))
@@ -31,7 +30,7 @@ describe('App', () => {
         expect(getByText('count is 0')).toBeInTheDocument()
     })
 
-    it('shouldSwitchToCompoundInterest_whenLinkClicked', async () => {
+    it('shouldSwitchToCompoundInterest_whenButtonClicked', async () => {
         const { getByText, container } = render(App)
 
         await fireEvent.click(getByText('Compound Interest'))

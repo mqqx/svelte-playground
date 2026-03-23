@@ -1,6 +1,7 @@
 <script lang="ts">
     import NumberRangeInput from '../inputs/NumberRangeInput.svelte'
-    import { format, roundTotal } from '../utils/format-utils'
+    import { formatCurrency, currencySymbol, roundTotal } from '../utils/format-utils'
+    import { store } from '../utils/store.svelte'
 
     const TAX_FREE_ALLOWANCE: number = 9408
     const FIRST_PROGRESSION_LIMIT: number = 14532
@@ -58,7 +59,7 @@
     }
 </script>
 
-<NumberRangeInput label="gross salary" bind:value={salary} min={0} max={1000000} unit="€" />
+<NumberRangeInput label="gross salary" bind:value={salary} min={0} max={1000000} unit={currencySymbol()} />
 
 <label>
     tax category
@@ -71,4 +72,4 @@
     </select>
 </label>
 
-<p>With a gross salary of {format(salary)} € you will pay {format(tax)} € tax and {format(socialSecurity)} € social security contributions which comes down to <b>{format(netSalary)} € net</b></p>
+<p>With a gross salary of {formatCurrency(salary)} you will pay {formatCurrency(tax)} tax and {formatCurrency(socialSecurity)} social security contributions which comes down to <b>{formatCurrency(netSalary)} net</b></p>
