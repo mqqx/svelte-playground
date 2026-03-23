@@ -1,5 +1,5 @@
 <script lang="ts">
-    import YearInput from '../inputs/YearInput.svelte'
+    import NumberRangeInput from '../inputs/NumberRangeInput.svelte'
     import { format } from '../utils/format-utils'
     import { store } from '../utils/store.svelte'
 
@@ -11,23 +11,9 @@
     const compoundAnnualGrowthRate = $derived((Math.pow(endPrice / startPrice, 1 / store.years) - 1) * 100)
 </script>
 
-<p>
-	<label>
-		start price
-		<input type=number bind:value={startPrice} min=1 max=10000000 step=0.01> €
-		<input type=range bind:value={startPrice} min=1 max=10000000 step=0.01>
-	</label>
-</p>
-
-<p>
-	<label>
-		end price
-		<input type=number bind:value={endPrice} min=1 max=10000000 step=0.01> €
-		<input type=range bind:value={endPrice} min=1 max=10000000 step=0.01>
-	</label>
-</p>
-
-<YearInput/>
+<NumberRangeInput label="start price" bind:value={startPrice} min={1} max={10000000} step={0.01} unit="€" />
+<NumberRangeInput label="end price" bind:value={endPrice} min={1} max={10000000} step={0.01} unit="€" />
+<NumberRangeInput label="years" bind:value={store.years} min={1} max={100} />
 
 <p>With a start price of {format(startPrice)} €
 	and an end price of {format(endPrice)} €

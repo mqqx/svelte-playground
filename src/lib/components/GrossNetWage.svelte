@@ -1,4 +1,5 @@
 <script lang="ts">
+    import NumberRangeInput from '../inputs/NumberRangeInput.svelte'
     import { format, roundTotal } from '../utils/format-utils'
 
     const TAX_FREE_ALLOWANCE: number = 9408
@@ -57,12 +58,7 @@
     }
 </script>
 
-<p>
-    <label>
-        gross salary
-        <input type=number bind:value={salary} min=0> €
-    </label>
-</p>
+<NumberRangeInput label="gross salary" bind:value={salary} min={0} max={1000000} unit="€" />
 
 <label>
     tax category

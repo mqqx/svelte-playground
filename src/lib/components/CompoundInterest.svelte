@@ -1,7 +1,5 @@
 <script lang="ts">
-    import InterestRateInput from '../inputs/InterestRateInput.svelte'
-    import SeedCapitalInput from '../inputs/SeedCapitalInput.svelte'
-    import YearInput from '../inputs/YearInput.svelte'
+    import NumberRangeInput from '../inputs/NumberRangeInput.svelte'
     import { format, roundTotal } from '../utils/format-utils'
     import { store } from '../utils/store.svelte'
 
@@ -10,9 +8,9 @@
     const total = $derived(roundTotal(store.seedCapital * compoundInterestFactor))
 </script>
 
-<SeedCapitalInput/>
-<InterestRateInput/>
-<YearInput/>
+<NumberRangeInput label="seed capital" bind:value={store.seedCapital} min={0} max={1000000} unit="€" />
+<NumberRangeInput label="interest rate" bind:value={store.interestRate} min={0} max={50} step={0.1} unit="%" />
+<NumberRangeInput label="years" bind:value={store.years} min={1} max={100} />
 
 <p>{format(store.seedCapital)} €
     with {format(store.interestRate)}% interest rate

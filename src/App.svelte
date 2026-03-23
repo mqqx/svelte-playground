@@ -1,41 +1,21 @@
 <script lang="ts">
-    import RandomGreenGrid from "./lib/components/RandomGreenGrid.svelte";
-    import GrossNetWage from "./lib/components/GrossNetWage.svelte";
-    import CompoundAnnualGrowthRate from "./lib/components/CompoundAnnualGrowthRate.svelte";
-    import CompoundInterestMonthlyDeposit from "./lib/components/CompoundInterestMonthlyDeposit.svelte";
-    import CompoundInterest from "./lib/components/CompoundInterest.svelte";
-    import Counter from "./lib/components/Counter.svelte";
+    import { calculators } from './lib/calculators'
 
-    let menu = $state(5)
+    let activeId = $state('random-green-grid')
+
+    const activeCalculator = $derived(calculators.find(c => c.id === activeId))
 </script>
 
 <main>
     <ul>
-        <li><a href="/" onclick={(e) => { e.preventDefault(); menu = 1 }}>Compound interest</a></li>
-        |
-        <li><a href="/" onclick={(e) => { e.preventDefault(); menu = 2 }}>Compound interest with monthly contribution</a></li>
-        |
-        <li><a href="/" onclick={(e) => { e.preventDefault(); menu = 3 }}>Compound annual growth rate</a></li>
-        |
-        <li><a href="/" onclick={(e) => { e.preventDefault(); menu = 4 }}>Gross net wage</a></li>
-        |
-        <li><a href="/" onclick={(e) => { e.preventDefault(); menu = 5 }}>Random green grid</a></li>
-        |
-        <li><a href="/" onclick={(e) => { e.preventDefault(); menu = 6 }}>Counter</a></li>
+        {#each calculators as calc, i}
+            {#if i > 0} | {/if}
+            <li><a href="/" onclick={(e) => { e.preventDefault(); activeId = calc.id }}>{calc.name}</a></li>
+        {/each}
     </ul>
 
-    {#if menu === 1}
-        <CompoundInterest/>
-    {:else if menu === 2}
-        <CompoundInterestMonthlyDeposit/>
-    {:else if menu === 3}
-        <CompoundAnnualGrowthRate/>
-    {:else if menu === 4}
-        <GrossNetWage/>
-    {:else if menu === 5}
-        <RandomGreenGrid/>
-    {:else if menu === 6}
-        <Counter/>
+    {#if activeCalculator}
+        <activeCalculator.component />
     {:else}
         <h1>
             Page Not Found

@@ -1,4 +1,6 @@
 <script lang="ts">
+    import NumberRangeInput from '../inputs/NumberRangeInput.svelte'
+
     let x = $state(20)
     let y = $state(20)
     let randomNumberIntervalStart = $state(1)
@@ -30,30 +32,10 @@
     }
 </script>
 
-<p>
-	<label>
-		x
-		<input type=number bind:value={x} min=1>
-	</label>
-</p>
-<p>
-	<label>
-		y
-		<input type=number bind:value={y} min=1>
-	</label>
-</p>
-<p>
-	<label>
-		random number from
-		<input type=number bind:value={randomNumberIntervalStart} min=1>
-	</label>
-</p>
-<p>
-	<label>
-		random number to
-		<input type=number bind:value={randomNumberIntervalEnd} min=1>
-	</label>
-</p>
+<NumberRangeInput label="x" bind:value={x} min={1} max={100} />
+<NumberRangeInput label="y" bind:value={y} min={1} max={100} />
+<NumberRangeInput label="random number from" bind:value={randomNumberIntervalStart} min={1} max={10000} />
+<NumberRangeInput label="random number to" bind:value={randomNumberIntervalEnd} min={1} max={10000} />
 
 <div>
 	<table class="table-center">

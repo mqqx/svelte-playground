@@ -6,11 +6,11 @@ describe('App', () => {
     it('shouldRenderNavigation_whenMounted', () => {
         const { getByText } = render(App)
 
-        expect(getByText('Compound interest')).toBeInTheDocument()
-        expect(getByText('Compound interest with monthly contribution')).toBeInTheDocument()
-        expect(getByText('Compound annual growth rate')).toBeInTheDocument()
-        expect(getByText('Gross net wage')).toBeInTheDocument()
-        expect(getByText('Random green grid')).toBeInTheDocument()
+        expect(getByText('Compound Interest')).toBeInTheDocument()
+        expect(getByText('Compound Interest with Monthly Contribution')).toBeInTheDocument()
+        expect(getByText('Compound Annual Growth Rate')).toBeInTheDocument()
+        expect(getByText('Gross Net Wage')).toBeInTheDocument()
+        expect(getByText('Random Green Grid')).toBeInTheDocument()
         expect(getByText('Counter')).toBeInTheDocument()
     })
 
@@ -18,7 +18,6 @@ describe('App', () => {
         const { container } = render(App)
         await new Promise(r => setTimeout(r, 0))
 
-        // Default menu is 5 (RandomGreenGrid)
         const table = container.querySelector('table')
         expect(table).toBeInTheDocument()
     })
@@ -35,7 +34,7 @@ describe('App', () => {
     it('shouldSwitchToCompoundInterest_whenLinkClicked', async () => {
         const { getByText, container } = render(App)
 
-        await fireEvent.click(getByText('Compound interest'))
+        await fireEvent.click(getByText('Compound Interest'))
         await new Promise(r => setTimeout(r, 0))
 
         expect(container.textContent).toContain('seed capital')
