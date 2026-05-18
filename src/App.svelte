@@ -29,7 +29,9 @@
 
     <section>
         {#if activeCalculator}
-            <activeCalculator.component />
+            {#key activeId}
+                <activeCalculator.component />
+            {/key}
         {:else}
             <h1>Page Not Found</h1>
         {/if}

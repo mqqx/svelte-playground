@@ -4,6 +4,7 @@ import CompoundAnnualGrowthRate from './components/CompoundAnnualGrowthRate.svel
 import GrossNetWage from './components/GrossNetWage.svelte'
 import RandomGreenGrid from './components/RandomGreenGrid.svelte'
 import Counter from './components/Counter.svelte'
+import SchoolCosts from './components/SchoolCosts.svelte'
 
 export const calculators = [
     { id: 'compound-interest', name: 'Compound Interest', component: CompoundInterest },
@@ -12,4 +13,5 @@ export const calculators = [
     { id: 'gross-net-wage', name: 'Gross Net Wage', component: GrossNetWage },
     { id: 'random-green-grid', name: 'Random Green Grid', component: RandomGreenGrid },
     { id: 'counter', name: 'Counter', component: Counter },
+    { id: 'school-costs', name: 'School Costs Phuket', component: SchoolCosts },
 ]
