@@ -4,7 +4,7 @@ A collection of interactive calculators and toy apps built with Svelte 5 and run
 
 ## Demo
 
-https://mqqx.github.io/svelte-playground/
+https://svelte.hmmr.dev
 
 ## Calculators
 
@@ -29,7 +29,7 @@ https://mqqx.github.io/svelte-playground/
 - [Vite 8](https://vitejs.dev/)
 - [Vitest](https://vitest.dev/) + [Testing Library](https://testing-library.com/docs/svelte-testing-library/intro)
 - TypeScript
-- Deployed to GitHub Pages via [gh-pages](https://github.com/tschaub/gh-pages)
+- Docker (nginx) behind Traefik on our VPS, released from a local machine with `DEPLOY_HOST=root@<vps ip> ops/release.sh X.Y.Z` -- see [docs/deployment.md](docs/deployment.md)
 
 ## Getting Started
 
@@ -49,7 +49,6 @@ npm run dev
 | `npm run preview` | Preview production build           |
 | `npm run check`   | Run svelte-check for type errors   |
 | `npm run test`    | Run tests                          |
-| `npm run deploy`  | Deploy to GitHub Pages             |
 
 ## License
 

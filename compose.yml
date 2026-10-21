@@ -1,0 +1,24 @@
+# Joins the shared Traefik stack on the VPS (see ../infra/README.md, "How a service joins").
+services:
+  svelte-playground:
+    # Pinned deliberately: no :latest, so a pull can never move the deployment to a
+    # different build. ops/release.sh moves this tag; to roll back, change it and run
+    # `docker compose pull && docker compose up -d` in /opt/svelte-playground.
+    image: ghcr.io/mqqx/svelte-playground:1.0.2
+    container_name: svelte-playground
+    restart: unless-stopped
+    # nginx serving static files idles around 10 MB
+    mem_limit: 32m
+    networks:
+      - traefik
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.svelte.rule=Host(`svelte.hmmr.dev`)
+      - traefik.http.routers.svelte.entrypoints=websecure
+      # Plain TLS, no certresolver: the Cloudflare Origin CA cert matches by SNI
+      - traefik.http.routers.svelte.tls=true
+      - traefik.http.services.svelte.loadbalancer.server.port=80
+
+networks:
+  traefik:
+    external: true
