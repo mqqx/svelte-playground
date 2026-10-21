@@ -25,12 +25,14 @@ https://mqqx.github.io/svelte-playground/
 ## Tech Stack
 
 - [Svelte 5](https://svelte.dev/) with runes syntax
-- [Vite 6](https://vitejs.dev/)
+- [Vite 8](https://vitejs.dev/)
 - [Vitest](https://vitest.dev/) + [Testing Library](https://testing-library.com/docs/svelte-testing-library/intro)
 - TypeScript
 - Deployed to GitHub Pages via [gh-pages](https://github.com/tschaub/gh-pages)
 
 ## Getting Started
+
+Requires Node 22.12 or newer.
 
 ```sh
 npm install
