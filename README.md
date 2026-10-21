@@ -14,6 +14,7 @@ https://mqqx.github.io/svelte-playground/
 - **Gross Net Wage** -- German income tax calculator with tax categories
 - **Random Green Grid** -- configurable grid of random numbers with green color mapping
 - **Counter** -- simple counter
+- **Sudoku** -- generated puzzles with a unique solution, three difficulty levels, conflict highlighting and keyboard input
 
 ## Features
 
