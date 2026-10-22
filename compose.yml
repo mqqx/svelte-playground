@@ -4,7 +4,7 @@ services:
     # Pinned deliberately: no :latest, so a pull can never move the deployment to a
     # different build. ops/release.sh moves this tag; to roll back, change it and run
     # `docker compose pull && docker compose up -d` in /opt/svelte-playground.
-    image: ghcr.io/mqqx/svelte-playground:1.1.0
+    image: ghcr.io/mqqx/svelte-playground:1.1.1
     container_name: svelte-playground
     restart: unless-stopped
     # nginx serving static files idles around 10 MB
