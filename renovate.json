@@ -1,0 +1,53 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    "docker:pinDigests",
+    ":semanticCommitTypeAll(build)"
+  ],
+  "timezone": "Europe/Berlin",
+  "schedule": [
+    "before 7am on monday"
+  ],
+  "minimumReleaseAge": "3 days",
+  "osvVulnerabilityAlerts": true,
+  "vulnerabilityAlerts": {
+    "labels": [
+      "security"
+    ],
+    "semanticCommitType": "fix",
+    "minimumReleaseAge": null
+  },
+  "packageRules": [
+    {
+      "description": "One PR per severity; patch includes base-image digest rebuilds. No CI here, so nothing merges itself: ops/release.sh runs the checks.",
+      "matchUpdateTypes": [
+        "patch",
+        "digest",
+        "pin",
+        "pinDigest"
+      ],
+      "groupName": "patch updates"
+    },
+    {
+      "matchUpdateTypes": [
+        "minor"
+      ],
+      "groupName": "minor updates"
+    },
+    {
+      "description": "Released and pinned by ops/release.sh, never by Renovate",
+      "matchPackageNames": [
+        "ghcr.io/mqqx/**"
+      ],
+      "enabled": false
+    },
+    {
+      "description": "Stay on nginx's stable branch (even minor, e.g. 1.30.x); odd minors are mainline",
+      "matchPackageNames": [
+        "nginx"
+      ],
+      "allowedVersions": "/^1\\.\\d*[02468]\\.\\d+/"
+    }
+  ]
+}
