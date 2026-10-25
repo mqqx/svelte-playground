@@ -56,10 +56,11 @@ git push -q --atomic origin main "v$V"
 echo "== deploy"
 "${SSH[@]}" "mkdir -p $DIR"
 "${SCP[@]}" compose.yml "$HOST:$DIR/compose.yml"
-# The package is private: the host pulls with this machine's token and logs out
-# again right after, so the token is never left in the host's docker config
-gh auth token | "${SSH[@]}" "cd $DIR && docker login ghcr.io -u mqqx --password-stdin >/dev/null \
-	&& { docker compose pull -q; status=\$?; docker logout ghcr.io >/dev/null; exit \$status; }"
+# The package is private: the host pulls with this machine's token in a throwaway
+# docker config, removed right after. Never log in to root's own config: docker keeps
+# one login per registry, so it would replace baxi's pull token, and a logout clears it
+gh auth token | "${SSH[@]}" "cd $DIR && export DOCKER_CONFIG=\$(mktemp -d) && trap 'rm -rf \"\$DOCKER_CONFIG\"' EXIT \
+	&& docker login ghcr.io -u mqqx --password-stdin >/dev/null && docker compose pull -q"
 "${SSH[@]}" "cd $DIR && docker compose up -d && docker image prune -f >/dev/null"
 
 echo "== waiting for health"
