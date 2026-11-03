@@ -28,6 +28,12 @@
     let extraMonthly = $state<Record<string, number>>({})
     let waivedEntFees = $state(new Set<string>())
 
+    const spanYears = $derived.by(() => {
+        const fromIdx = GRADE_KEYS.indexOf(spanFrom)
+        const toIdx = GRADE_KEYS.indexOf(spanTo)
+        return fromIdx >= 0 && toIdx >= fromIdx ? toIdx - fromIdx + 1 : null
+    })
+
     const spanStats = $derived.by(() => {
         const stats = new Map<string, { min: number; max: number }>()
         for (const year of allYears) {
@@ -238,10 +244,12 @@
                     <th>12</th>
                 {/if}
                 <th class="sortable span-head" onclick={() => setSort('span')}>{GRADE_LABELS[spanFrom]} → {GRADE_LABELS[spanTo]}{sortArrow('span')}</th>
+                <th class="rate-head">Per Year</th>
             </tr>
         </thead>
         <tbody>
             {#each filteredRows as row}
+                {@const spanCost = computeSpanCost(row, spanFrom, spanTo, extraMonthly[row.school] ?? 0, !waivedEntFees.has(row.school))}
                 <tr>
                     <td class="school-name">{SCHOOL_NAMES[row.school] ?? row.school}</td>
                     <td class="year-cell">{formatYear(row.year)}</td>
@@ -267,9 +275,17 @@
                         <td>{fmt(row.g12)}</td>
                     {/if}
                     <td class="span-cell" style="background-color: {spanColor(row)}">
-                        {fmt(computeSpanCost(row, spanFrom, spanTo, extraMonthly[row.school] ?? 0, !waivedEntFees.has(row.school)))}
+                        {fmt(spanCost)}
                         {#if row.deposit !== null}
                             <span class="deposit-note">deposit {fmt(row.deposit)}</span>
+                        {/if}
+                    </td>
+                    <td class="rate-cell">
+                        {#if spanCost !== null && spanYears !== null}
+                            {fmt(Math.round(spanCost / spanYears))}
+                            <span class="deposit-note">{fmt(Math.round(spanCost / spanYears / 12))} / mo</span>
+                        {:else}
+                            —
                         {/if}
                     </td>
                 </tr>
@@ -377,6 +393,11 @@
         border-left: 2px solid #45475a;
     }
 
+    thead th.rate-head {
+        color: #cba6f7;
+        border-left: 1px solid #313244;
+    }
+
     tbody tr {
         border-bottom: 1px solid #313244;
         transition: background 0.1s;
@@ -419,6 +440,11 @@
         font-weight: 700;
         color: #cdd6f4;
         transition: filter 0.1s;
+    }
+
+    td.rate-cell {
+        border-left: 1px solid #313244;
+        color: #cdd6f4;
     }
 
     .deposit-note {
