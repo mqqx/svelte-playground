@@ -1,6 +1,6 @@
 # Build the static bundle, then serve it from nginx. The Node stage never ships:
 # the runtime image is nginx plus ~70 KB of HTML/JS/CSS.
-FROM node:24.22.2-alpine AS build
+FROM node:26.13.0-alpine AS build
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN --mount=type=cache,target=/root/.npm npm ci

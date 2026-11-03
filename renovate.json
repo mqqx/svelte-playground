@@ -48,6 +48,13 @@
         "nginx"
       ],
       "allowedVersions": "/^1\\.\\d*[02468]\\.\\d+/"
+    },
+    {
+      "description": "TypeScript 7 (the Go port) waits for svelte-check, which accepts only ^5 || ^6 as peer. Drop once it accepts ^7.",
+      "matchPackageNames": [
+        "typescript"
+      ],
+      "allowedVersions": "<7"
     }
   ]
 }
