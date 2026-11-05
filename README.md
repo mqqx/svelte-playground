@@ -29,7 +29,7 @@ https://svelte.hmmr.dev
 - [Vite 8](https://vitejs.dev/)
 - [Vitest](https://vitest.dev/) + [Testing Library](https://testing-library.com/docs/svelte-testing-library/intro)
 - TypeScript
-- Docker (nginx) behind Traefik on our VPS, released from a local machine with `DEPLOY_HOST=root@<vps ip> ops/release.sh X.Y.Z` -- see [docs/deployment.md](docs/deployment.md)
+- Docker (nginx) behind Traefik on our VPS, released from a local machine with `ops/release.sh X.Y.Z` -- see [docs/deployment.md](docs/deployment.md)
 
 ## Getting Started
 

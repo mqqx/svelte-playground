@@ -1,18 +1,21 @@
 #!/usr/bin/env bash
 # Releases and deploys from this machine: checks, image, pin + tag, VPS.
 #
-#   DEPLOY_HOST=root@<vps ip> ops/release.sh 1.1.0
+#   ops/release.sh 1.1.0
 #
 # Needs: a clean tree on main, `gh` logged in with write:packages, Docker buildx
 # and the "ssh hetzner cloud" key in the SSH agent (1Password).
 #
-# The host comes from the environment because this repo is public: the origin
-# IP is kept out of DNS (everything is proxied through Cloudflare), and
-# committing it here would undo that. It is in the private infra repo's README.
+# The host is never written here because this repo is public: the origin IP is
+# kept out of DNS (everything is proxied through Cloudflare), and committing it
+# would undo that. It comes from the private infra repo checked out next to this
+# one (`../infra/bin/vps host`), or from DEPLOY_HOST=root@<vps ip> when set.
 set -euo pipefail
 
-V=${1:?usage: DEPLOY_HOST=root@<vps ip> ops/release.sh X.Y.Z}
-HOST=${DEPLOY_HOST:?set DEPLOY_HOST=root@<vps ip>, see the infra repo README, "Access"}
+V=${1:?usage: ops/release.sh X.Y.Z}
+VPS="$(dirname "$0")/../../infra/bin/vps"
+HOST=${DEPLOY_HOST:-$("$VPS" host 2>/dev/null)} || true
+[[ -n $HOST ]] || { echo "no host: check out the infra repo next to this one, or set DEPLOY_HOST=root@<vps ip>" >&2; exit 1; }
 DIR=/opt/svelte-playground
 IMAGE=ghcr.io/mqqx/svelte-playground
 
