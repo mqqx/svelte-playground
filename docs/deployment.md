@@ -9,14 +9,14 @@ in [`../infra`](../../infra/README.md).
 From this machine, no CI involved:
 
 ```bash
-ops/release.sh 1.1.0
+ops/release.sh 1.1.0             # release and deploy
+ops/release.sh 1.1.0 --dry-run   # checks and image build only, nothing pushed
 ```
 
-The script gets the VPS address from the private infra repo checked out next to
-this one (`../infra/bin/vps host`). Without that checkout, pass it as
-`DEPLOY_HOST=root@<vps ip>`; the IP is in the infra README ("Access"). It stays
-out of this public repo because the origin is only reachable through
-Cloudflare's proxy, and DNS doesn't reveal it.
+`ops/release.sh` hands over to the shared release script of the private infra
+repo, checked out next to this one (`../infra/bin/release`). That script also
+knows the VPS address, which stays out of this public repo: the origin is only
+reachable through Cloudflare's proxy, and DNS doesn't reveal it.
 
 It runs the type check and tests, builds the amd64 image from the `Dockerfile`
 (Node build stage, nginx runtime) and pushes it to
