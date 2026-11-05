@@ -5,6 +5,9 @@
 
     let activeId = $state('compound-interest-monthly')
 
+    const VERSION = __APP_VERSION__ === 'dev' ? 'dev' : `v${__APP_VERSION__}`
+    const RELEASE_URL = __APP_VERSION__ === 'dev' ? undefined : `https://github.com/mqqx/svelte-playground/releases/tag/v${__APP_VERSION__}`
+
     const activeCalculator = $derived(calculators.find(c => c.id === activeId))
 </script>
 
@@ -36,6 +39,11 @@
             <h1>Page Not Found</h1>
         {/if}
     </section>
+
+    <!-- Which release runs: small and out of the way, below the content -->
+    <footer>
+        <a href={RELEASE_URL} title={__APP_REVISION__ ? `Commit ${__APP_REVISION__}` : undefined}>{VERSION}</a>
+    </footer>
 </main>
 
 <style>
@@ -45,16 +53,43 @@
 
     :global(body) {
         margin: 0;
+        min-height: 100vh;
         background-color: #1e1e2e;
         color: #cdd6f4;
         font-family: system-ui, -apple-system, sans-serif;
         line-height: 1.6;
     }
 
+    /* A column, so the footer sits at the bottom edge on short pages */
     main {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
         max-width: 960px;
         margin: 0 auto;
-        padding: 1.5rem;
+        padding: 1.5rem 1.5rem 0.75rem;
+    }
+
+    section {
+        flex: 1;
+    }
+
+    footer {
+        padding-top: 1rem;
+        text-align: right;
+        font-size: 11px;
+    }
+
+    footer a {
+        color: #a6adc8;
+        opacity: 0.6;
+        text-decoration: none;
+    }
+
+    footer a[href]:hover,
+    footer a[href]:focus-visible {
+        opacity: 1;
+        text-decoration: underline;
     }
 
     header {

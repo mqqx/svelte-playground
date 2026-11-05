@@ -43,6 +43,8 @@ docker buildx build --platform linux/amd64 \
 	--label org.opencontainers.image.source=https://github.com/mqqx/svelte-playground \
 	--label org.opencontainers.image.version="$V" \
 	--label org.opencontainers.image.revision="$(git rev-parse HEAD)" \
+	--build-arg APP_VERSION="$V" \
+	--build-arg APP_REVISION="$(git rev-parse --short HEAD)" \
 	-t "$IMAGE:$V" --push .
 
 echo "== pin, tag, push"

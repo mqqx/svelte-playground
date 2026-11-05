@@ -5,6 +5,9 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 RUN --mount=type=cache,target=/root/.npm npm ci
 COPY . .
+# Stamped into the page by vite.config.ts; ops/release.sh passes them
+ARG APP_VERSION=dev
+ARG APP_REVISION=
 RUN npm run build
 
 FROM nginx:1.30.6-alpine
