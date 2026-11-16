@@ -1,0 +1,3 @@
+# Gitignored files Claude copies into a new worktree (gitignore syntax)
+.claude/settings.local.json
+.claude/claude.md
