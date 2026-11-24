@@ -1,6 +1,6 @@
 # Build the static bundle, then serve it from nginx. The Node stage never ships:
 # the runtime image is nginx plus ~70 KB of HTML/JS/CSS.
-FROM node:26.13.0-alpine AS build
+FROM node:26.13.1-alpine@sha256:6bd9ab43c0ec0190ca7b2d193906cb8b7edf6e7f4afa43ddeccd6452710bffb5 AS build
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN --mount=type=cache,target=/root/.npm npm ci
@@ -10,7 +10,7 @@ ARG APP_VERSION=dev
 ARG APP_REVISION=
 RUN npm run build
 
-FROM nginx:1.30.6-alpine
+FROM nginx:1.30.7-alpine@sha256:caf4e1e032a20f9c3c5e28fc7f25ffd768ad8677b4975c54193075997b3a97e3
 # The nginx image lags behind Alpine's security fixes (brotli, curl, expat were
 # fixed upstream but not yet in the tag), so take them at build time
 RUN apk upgrade --no-cache
