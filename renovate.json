@@ -7,7 +7,7 @@
   ],
   "timezone": "Europe/Berlin",
   "schedule": [
-    "before 7am on monday"
+    "before 7am"
   ],
   "minimumReleaseAge": "3 days",
   "osvVulnerabilityAlerts": true,
